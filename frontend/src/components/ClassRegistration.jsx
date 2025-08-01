@@ -47,6 +47,7 @@ function ClassRegistration() {
       setSelectedClass("");
       setSelectedStudent("");
       setMessage("Đăng ký thành công!");
+      fetchClasses();
     } catch (error) {
       console.error("Error registering student:", error);
       setMessage(
