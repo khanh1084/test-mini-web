@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/khanh1084/test-mini-web/compare/v1.1.1...v1.2.0) (2025-08-01)
+
+
+### Features
+
+* update route and readme file ([e4826b9](https://github.com/khanh1084/test-mini-web/commit/e4826b94f1b2c1027fcb82fcadfe54a126473562))
+
 ## [1.1.1](https://github.com/khanh1084/test-mini-web/compare/v1.1.0...v1.1.1) (2025-08-01)
 
 
