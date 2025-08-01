@@ -1,0 +1,237 @@
+{
+  "info": {
+    "_postman_id": "student-management-api",
+    "name": "Student Management API",
+    "description": "API collection for Student Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Parents",
+      "item": [
+        {
+          "name": "Create Parent",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nguyễn Văn An\",\n  \"phone\": \"0123456789\",\n  \"email\": \"nguyenvana@email.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/parents",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "parents"]
+            }
+          }
+        },
+        {
+          "name": "Get Parent",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/parents/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "parents", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nguyễn Thị B\",\n  \"dob\": \"2010-05-15\",\n  \"gender\": \"Female\",\n  \"current_grade\": \"Grade 5\",\n  \"parent_id\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/students",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "students"]
+            }
+          }
+        },
+        {
+          "name": "Get Student",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/students/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "students", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Classes",
+      "item": [
+        {
+          "name": "Create Class",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Toán cơ bản\",\n  \"subject\": \"Mathematics\",\n  \"day_of_week\": \"Monday\",\n  \"time_slot\": \"14:00-15:30\",\n  \"teacher_name\": \"Cô Hương\",\n  \"max_students\": 15\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/classes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "classes"]
+            }
+          }
+        },
+        {
+          "name": "Get Classes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/classes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "classes"]
+            }
+          }
+        },
+        {
+          "name": "Get Classes by Day",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/classes?day=Monday",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "classes"],
+              "query": [
+                {
+                  "key": "day",
+                  "value": "Monday"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Class Registration",
+      "item": [
+        {
+          "name": "Register Student to Class",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/classes/1/register?student_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "classes", "1", "register"],
+              "query": [
+                {
+                  "key": "student_id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Create Subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student_id\": 1,\n  \"package_name\": \"Gói Toán 3 tháng\",\n  \"start_date\": \"2024-01-01\",\n  \"end_date\": \"2024-03-31\",\n  \"total_sessions\": 24\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/subscriptions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get Subscription",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/subscriptions/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "subscriptions", "1"]
+            }
+          }
+        },
+        {
+          "name": "Use Subscription Session",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/subscriptions/1/use",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "subscriptions", "1", "use"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
