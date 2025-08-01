@@ -45,3 +45,8 @@ def register_student_to_class(class_id: int, student_id: int, db: Session = Depe
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) 
+
+@router.get("/registrations/count")
+def get_regis_count(db: Session = Depends(get_db)):
+    """Get the total number of registrations"""
+    return ClassService.get_total_registrations(db)

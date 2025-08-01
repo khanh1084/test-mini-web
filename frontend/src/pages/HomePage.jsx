@@ -17,17 +17,19 @@ function HomePage() {
   const fetchStats = async () => {
     try {
       // Fetch stats from API
-      const [parentsRes, studentsRes, classesRes] = await Promise.all([
-        axios.get("/api/parents"),
-        axios.get("/api/students"),
-        axios.get("/api/classes"),
-      ]);
+      const [parentsRes, studentsRes, classesRes, registrationsRes] =
+        await Promise.all([
+          axios.get("/api/parents"),
+          axios.get("/api/students"),
+          axios.get("/api/classes"),
+          axios.get("/api/classes/registrations/count"),
+        ]);
 
       setStats({
         totalParents: parentsRes.data.length,
         totalStudents: studentsRes.data.length,
         totalClasses: classesRes.data.length,
-        totalRegistrations: 0, // Will be calculated from registrations endpoint
+        totalRegistrations: registrationsRes.data,
       });
     } catch (error) {
       console.error("Error fetching stats:", error);
