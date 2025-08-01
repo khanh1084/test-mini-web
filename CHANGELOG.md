@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/khanh1084/test-mini-web/compare/v1.1.0...v1.1.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* number of students ([35fc6d8](https://github.com/khanh1084/test-mini-web/commit/35fc6d8e5b60db3e2904bc428af2694467b79a40))
+
 # [1.1.0](https://github.com/khanh1084/test-mini-web/compare/v1.0.0...v1.1.0) (2025-08-01)
 
 
