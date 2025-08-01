@@ -112,3 +112,8 @@ class ClassService:
             
             return ClassWithRegistrations.model_validate(class_dict)
         return None 
+    
+    @staticmethod
+    def get_total_registrations(db: Session) -> int:
+        """Get the total number of registrations"""
+        return db.query(ClassRegistration).count()
