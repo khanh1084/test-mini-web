@@ -19,6 +19,7 @@ class ClassResponse(BaseModel):
     day_of_week: str
     time_slot: str
     teacher_name: str
+    current_students: int
     max_students: int
     created_at: datetime
     updated_at: Optional[datetime] = None

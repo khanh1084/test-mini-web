@@ -53,7 +53,7 @@ class StudentService:
     @staticmethod
     def get_all_students_with_parents(db: Session) -> list[StudentWithParent]:
         """Get all students with parent information"""
-        students = db.query(Student).all()
+        students = db.query(Student).order_by(Student.id.asc()).all()
         result = []
         for student in students:
             student_dict = StudentResponse.model_validate(student).model_dump()

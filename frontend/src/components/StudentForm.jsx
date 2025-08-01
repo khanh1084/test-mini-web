@@ -172,19 +172,16 @@ function StudentForm() {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Họ và tên</th>
                 <th>Ngày sinh</th>
                 <th>Giới tính</th>
                 <th>Lớp</th>
                 <th>Phụ huynh</th>
-                <th>Ngày tạo</th>
               </tr>
             </thead>
             <tbody>
               {students.map((student) => (
                 <tr key={student.id}>
-                  <td>{student.id}</td>
                   <td>{student.name}</td>
                   <td>{new Date(student.dob).toLocaleDateString("vi-VN")}</td>
                   <td>
@@ -200,9 +197,6 @@ function StudentForm() {
                   </td>
                   <td>{student.current_grade}</td>
                   <td>{student.parent?.name || "N/A"}</td>
-                  <td>
-                    {new Date(student.created_at).toLocaleDateString("vi-VN")}
-                  </td>
                 </tr>
               ))}
             </tbody>

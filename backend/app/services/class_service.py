@@ -30,13 +30,51 @@ class ClassService:
     def get_classes_by_day(db: Session, day: str) -> List[ClassResponse]:
         """Get classes by day of week"""
         classes = db.query(Class).filter(Class.day_of_week == day).all()
-        return [ClassResponse.model_validate(class_obj) for class_obj in classes]
+        result = []
+        for class_obj in classes:
+            current_students = db.query(ClassRegistration).filter(
+                ClassRegistration.class_id == class_obj.id
+            ).count()
+            
+            class_dict = {
+                "id": class_obj.id,
+                "name": class_obj.name,
+                "subject": class_obj.subject,
+                "day_of_week": class_obj.day_of_week,
+                "time_slot": class_obj.time_slot,
+                "teacher_name": class_obj.teacher_name,
+                "max_students": class_obj.max_students,
+                "current_students": current_students,  
+                "created_at": class_obj.created_at,
+                "updated_at": class_obj.updated_at
+            }
+            result.append(ClassResponse.model_validate(class_dict))
+        return result
     
     @staticmethod
     def get_all_classes(db: Session) -> List[ClassResponse]:
         """Get all classes"""
         classes = db.query(Class).all()
-        return [ClassResponse.model_validate(class_obj) for class_obj in classes]
+        result = []
+        for class_obj in classes:
+            current_students = db.query(ClassRegistration).filter(
+                ClassRegistration.class_id == class_obj.id
+            ).count()
+            
+            class_dict = {
+                "id": class_obj.id,
+                "name": class_obj.name,
+                "subject": class_obj.subject,
+                "day_of_week": class_obj.day_of_week,
+                "time_slot": class_obj.time_slot,
+                "teacher_name": class_obj.teacher_name,
+                "max_students": class_obj.max_students,
+                "current_students": current_students,  
+                "created_at": class_obj.created_at,
+                "updated_at": class_obj.updated_at
+            }
+            result.append(ClassResponse.model_validate(class_dict))
+        return result
     
     @staticmethod
     def register_student_to_class(db: Session, class_id: int, student_id: int) -> dict:
