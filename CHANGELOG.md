@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/khanh1084/test-mini-web/compare/v1.2.0...v1.3.0) (2025-08-01)
+
+
+### Features
+
+* update folder structure ([465e020](https://github.com/khanh1084/test-mini-web/commit/465e020ed54c54402bf176e8db545055b8e42793))
+
 # [1.2.0](https://github.com/khanh1084/test-mini-web/compare/v1.1.1...v1.2.0) (2025-08-01)
 
 
