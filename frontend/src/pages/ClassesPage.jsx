@@ -1,5 +1,5 @@
 import React from "react";
-import ClassSchedule from "../components/ClassSchedule";
+import { ClassSchedule } from "../components/class";
 
 function ClassesPage() {
   return (

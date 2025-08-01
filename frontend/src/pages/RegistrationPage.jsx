@@ -1,5 +1,5 @@
 import React from "react";
-import ClassRegistration from "../components/ClassRegistration";
+import { ClassRegistration } from "../components/class";
 
 function RegistrationPage() {
   return (
