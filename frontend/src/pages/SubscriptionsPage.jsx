@@ -1,5 +1,5 @@
 import React from "react";
-import SubscriptionManagement from "../components/SubscriptionManagement";
+import { SubscriptionManagement } from "../components/subscription";
 
 function SubscriptionsPage() {
   return (
