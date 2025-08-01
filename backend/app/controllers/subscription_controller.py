@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.subscription_service import SubscriptionService
-from app.schemas.subscription import SubscriptionCreate, SubscriptionResponse, SubscriptionUse
+from app.schemas.subscription import SubscriptionCreate, SubscriptionResponse, SubscriptionUse, SubscriptionWithStudent
 from typing import List
 
 router = APIRouter(prefix="/api/subscriptions", tags=["subscriptions"])
@@ -39,7 +39,7 @@ def use_subscription_session(subscription_id: int, db: Session = Depends(get_db)
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/", response_model=List[SubscriptionResponse])
+@router.get("/", response_model=List[SubscriptionWithStudent])
 def get_all_subscriptions(db: Session = Depends(get_db)):
     """Get all subscriptions"""
-    return SubscriptionService.get_all_subscriptions(db) 
+    return SubscriptionService.get_all_subscriptions_with_student(db) 

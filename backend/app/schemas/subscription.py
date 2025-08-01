@@ -24,6 +24,17 @@ class SubscriptionResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+class SubscriptionWithStudent(BaseModel):
+    id: int
+    student_id: int
+    student: dict
+    package_name: str
+    start_date: date
+    end_date: date
+    total_sessions: int
+    used_sessions: int
+    created_at: datetime
+    updated_at: Optional[datetime] = None
 
 class SubscriptionUse(BaseModel):
     used_sessions: int 
