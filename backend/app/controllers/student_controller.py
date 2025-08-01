@@ -28,7 +28,7 @@ def get_student(student_id: int, db: Session = Depends(get_db)):
     return student
 
 
-@router.get("/", response_model=List[StudentResponse])
+@router.get("/", response_model=List[StudentWithParent])
 def get_all_students(db: Session = Depends(get_db)):
-    """Get all students"""
-    return StudentService.get_all_students(db) 
+    """Get all students with parent information"""
+    return StudentService.get_all_students_with_parents(db) 

@@ -48,4 +48,20 @@ class StudentService:
     def get_all_students(db: Session) -> list[StudentResponse]:
         """Get all students"""
         students = db.query(Student).all()
-        return [StudentResponse.model_validate(student) for student in students] 
+        return [StudentResponse.model_validate(student) for student in students]
+    
+    @staticmethod
+    def get_all_students_with_parents(db: Session) -> list[StudentWithParent]:
+        """Get all students with parent information"""
+        students = db.query(Student).all()
+        result = []
+        for student in students:
+            student_dict = StudentResponse.model_validate(student).model_dump()
+            student_dict["parent"] = {
+                "id": student.parent.id,
+                "name": student.parent.name,
+                "phone": student.parent.phone,
+                "email": student.parent.email
+            }
+            result.append(StudentWithParent.model_validate(student_dict))
+        return result 
