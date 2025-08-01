@@ -7,7 +7,11 @@ from app.controllers import parent_router, student_router, class_router, subscri
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Student Management API", version="1.0.0")
+app = FastAPI(
+    title="Student Management API", 
+    version="1.0.0",
+    redirect_slashes=False
+)
 
 # CORS middleware
 app.add_middleware(

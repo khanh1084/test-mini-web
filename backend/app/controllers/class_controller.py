@@ -9,6 +9,7 @@ router = APIRouter(prefix="/api/classes", tags=["classes"])
 
 
 @router.post("/", response_model=ClassResponse)
+@router.post("", response_model=ClassResponse)
 def create_class(class_data: ClassCreate, db: Session = Depends(get_db)):
     """Create a new class"""
     try:
@@ -18,6 +19,7 @@ def create_class(class_data: ClassCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[ClassResponse])
+@router.get("", response_model=List[ClassResponse])
 def get_classes(day: str = Query(None, description="Filter by day of week"), 
                 db: Session = Depends(get_db)):
     """Get classes, optionally filtered by day"""

@@ -9,6 +9,7 @@ router = APIRouter(prefix="/api/subscriptions", tags=["subscriptions"])
 
 
 @router.post("/", response_model=SubscriptionResponse)
+@router.post("", response_model=SubscriptionResponse)
 def create_subscription(subscription: SubscriptionCreate, db: Session = Depends(get_db)):
     """Create a new subscription"""
     try:
@@ -40,6 +41,7 @@ def use_subscription_session(subscription_id: int, db: Session = Depends(get_db)
 
 
 @router.get("/", response_model=List[SubscriptionWithStudent])
+@router.get("", response_model=List[SubscriptionWithStudent])
 def get_all_subscriptions(db: Session = Depends(get_db)):
     """Get all subscriptions"""
     return SubscriptionService.get_all_subscriptions_with_student(db) 
