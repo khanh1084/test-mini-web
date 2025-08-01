@@ -9,6 +9,7 @@ router = APIRouter(prefix="/api/parents", tags=["parents"])
 
 
 @router.post("/", response_model=ParentResponse)
+@router.post("", response_model=ParentResponse)
 def create_parent(parent: ParentCreate, db: Session = Depends(get_db)):
     """Create a new parent"""
     try:
@@ -27,6 +28,7 @@ def get_parent(parent_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[ParentResponse])
+@router.get("", response_model=List[ParentResponse])
 def get_all_parents(db: Session = Depends(get_db)):
     """Get all parents"""
     return ParentService.get_all_parents(db) 

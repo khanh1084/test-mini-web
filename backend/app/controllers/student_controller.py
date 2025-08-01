@@ -9,6 +9,7 @@ router = APIRouter(prefix="/api/students", tags=["students"])
 
 
 @router.post("/", response_model=StudentResponse)
+@router.post("", response_model=StudentResponse)
 def create_student(student: StudentCreate, db: Session = Depends(get_db)):
     """Create a new student"""
     try:
@@ -29,6 +30,7 @@ def get_student(student_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[StudentWithParent])
+@router.get("", response_model=List[StudentWithParent])
 def get_all_students(db: Session = Depends(get_db)):
     """Get all students with parent information"""
     return StudentService.get_all_students_with_parents(db) 
