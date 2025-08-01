@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from app.models.subscription import Subscription
 from app.models.student import Student
-from app.schemas.subscription import SubscriptionCreate, SubscriptionResponse, SubscriptionUse
+from app.schemas.subscription import SubscriptionCreate, SubscriptionResponse, SubscriptionUse, SubscriptionWithStudent
 from typing import Optional
 
 
@@ -54,3 +54,21 @@ class SubscriptionService:
         """Get all subscriptions"""
         subscriptions = db.query(Subscription).all()
         return [SubscriptionResponse.model_validate(subscription) for subscription in subscriptions] 
+    
+    @staticmethod
+    def get_all_subscriptions_with_student(db: Session) -> list[SubscriptionWithStudent]:
+        """Get all subscriptions with student information"""
+        subscriptions = db.query(Subscription).all()
+        result = []
+        for subscription in subscriptions:
+            subscription_dict = SubscriptionResponse.model_validate(subscription).model_dump()
+            subscription_dict["student"] = {
+                "id": subscription.student.id,
+                "name": subscription.student.name,
+                "dob": subscription.student.dob,
+                "gender": subscription.student.gender,
+                "current_grade": subscription.student.current_grade,
+                "parent_id": subscription.student.parent_id
+            }
+            result.append(SubscriptionWithStudent.model_validate(subscription_dict))
+        return result
