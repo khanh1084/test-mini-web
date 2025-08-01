@@ -58,7 +58,7 @@ class SubscriptionService:
     @staticmethod
     def get_all_subscriptions_with_student(db: Session) -> list[SubscriptionWithStudent]:
         """Get all subscriptions with student information"""
-        subscriptions = db.query(Subscription).all()
+        subscriptions = db.query(Subscription).order_by(Subscription.id.desc()).all()
         result = []
         for subscription in subscriptions:
             subscription_dict = SubscriptionResponse.model_validate(subscription).model_dump()
