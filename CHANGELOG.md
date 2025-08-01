@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/khanh1084/test-mini-web/compare/v1.0.0...v1.1.0) (2025-08-01)
+
+
+### Features
+
+* add counting for subscriptions ([5c32b04](https://github.com/khanh1084/test-mini-web/commit/5c32b04ee97cbe9b3298a0bac95d3a9fec9a1e9f))
+
 # 1.0.0 (2025-08-01)
 
 
